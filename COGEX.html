@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COGEX - Corregedoria Geral do Foro Extrajudicial</title>
+    <title>CORREGEDORIA DO FORO EXTRAJUDICIAL - Apresentação</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #3A7563;
-            --secondary-color: #5D4037;
-            --accent-color: #D4B464;
-            --light-bg: #F5EED6;
-            --alt-bg: #E8F5E9;
+            --gold: #D4AF37;
+            --dark-gold: #AA8C2C;
+            --black: #000000;
+            --dark-grey: #222222;
+            --light-grey: #333333;
+            --red: #990000;
+            --deep-red: #800000;
             --white: #FFFFFF;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --off-white: #F5F5F5;
+            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         * {
@@ -28,1396 +28,924 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 70px;
-        }
-
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--light-bg);
+            color: var(--white);
+            background-color: var(--black);
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--gold);
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
             margin-bottom: 1rem;
         }
 
         p {
             margin-bottom: 1.5rem;
+            font-size: 1.1rem;
         }
 
         a {
-            color: var(--primary-color);
+            color: var(--gold);
             text-decoration: none;
             transition: var(--transition);
         }
 
         a:hover {
-            color: var(--accent-color);
+            color: var(--red);
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
+        .main-container {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 4px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .btn:hover {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        /* Header and Navigation */
-        header {
-            position: fixed;
+        .slide {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: transform 0.8s ease, opacity 0.8s ease;
+            z-index: 1;
+            overflow-y: auto;
+            background-color: var(--black);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            z-index: 5;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 1s ease 0.5s, opacity 1s ease 0.5s;
+        }
+
+        .slide.active .slide-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 3rem;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 1rem;
         }
 
-        .logo img {
-            height: 50px;
-            margin-right: 10px;
-        }
-
-        .logo h1 {
-            font-size: 1.2rem;
-            margin: 0;
-            color: var(--secondary-color);
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-menu li {
-            margin-left: 25px;
-        }
-
-        .nav-menu a {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            color: var(--text-dark);
+        .slide-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
             position: relative;
         }
 
-        .nav-menu a::after {
+        .slide-title:after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        #hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(58, 117, 99, 0.8), rgba(93, 64, 55, 0.8)), url('/api/placeholder/1200/800') no-repeat center center/cover;
-            color: var(--white);
-            padding: 100px 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--white);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            color: var(--light-bg);
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .scroll-down {
-            position: absolute;
-            bottom: 30px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 1.5rem;
-            color: var(--white);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-20px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-        }
-
-        /* About Section */
-        #about {
-            padding: 100px 0;
-            background-color: var(--white);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
+            width: 150px;
             height: 3px;
-            background-color: var(--accent-color);
-            margin: 15px auto 0;
+            background: linear-gradient(90deg, var(--red), var(--gold), var(--red));
         }
 
-        .about-container {
+        .navigation {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 50px;
+            gap: 1rem;
+            z-index: 100;
         }
 
-        .about-image {
-            flex: 1;
-        }
-
-        .about-content {
-            flex: 1;
-        }
-
-        .about-feature {
-            margin-bottom: 20px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .about-feature:before {
-            content: '\f00c';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            color: var(--primary-color);
-            position: absolute;
-            left: 0;
-            top: 2px;
-        }
-
-        /* Structure Section */
-        #structure {
-            padding: 100px 0;
-            background-color: var(--alt-bg);
-        }
-
-        .structure-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .structure-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .structure-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .structure-card-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .structure-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .structure-card:hover .structure-card-image img {
-            transform: scale(1.1);
-        }
-
-        .structure-card-content {
-            padding: 20px;
-        }
-
-        .structure-card-title {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-        }
-
-        /* Projects Section */
-        #projects {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
-        }
-
-        .projects-tabs {
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--dark-grey);
+            color: var(--gold);
             display: flex;
             justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border: 2px solid var(--gold);
+            transition: var(--transition);
         }
 
-        .tab-button {
-            padding: 10px 20px;
-            background-color: transparent;
-            border: none;
-            border-bottom: 3px solid transparent;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--text-light);
+        .nav-btn:hover {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
+        .slide-indicators {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .slide-indicator {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--dark-grey);
+            border: 2px solid var(--gold);
             cursor: pointer;
             transition: var(--transition);
-            margin: 0 5px 10px;
         }
 
-        .tab-button.active, .tab-button:hover {
-            color: var(--primary-color);
-            border-bottom-color: var(--primary-color);
+        .slide-indicator.active {
+            background-color: var(--gold);
+            transform: scale(1.3);
         }
 
-        .projects-container {
+        .slide-indicator:hover {
+            background-color: var(--red);
+        }
+
+        .columns {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
-        .project-card {
-            background-color: var(--white);
+        .card {
+            background: linear-gradient(135deg, var(--light-grey), var(--dark-grey));
+            border: 1px solid var(--gold);
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
+            padding: 1.5rem;
             transition: var(--transition);
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-card-image {
-            height: 200px;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
         }
 
-        .project-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .project-card:hover .project-card-image img {
-            transform: scale(1.05);
-        }
-
-        .project-card-content {
-            padding: 20px;
-        }
-
-        .project-card-title {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-        }
-
-        .project-badge {
+        .card:before {
+            content: '';
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--red), var(--gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
         }
 
-        /* Team Section */
-        #team {
-            padding: 100px 0;
-            background-color: var(--white);
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        .card:hover:before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
         }
 
         .team-member {
             text-align: center;
-            background-color: var(--light-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            padding: 1rem;
         }
 
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-member-image {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .team-member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .team-member:hover .team-member-image img {
-            transform: scale(1.05);
-        }
-
-        .team-member-content {
-            padding: 20px;
-        }
-
-        .team-member-name {
-            font-size: 1.25rem;
-            margin-bottom: 5px;
-            color: var(--secondary-color);
-        }
-
-        .team-member-role {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-
-        .team-social {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .team-social a {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--primary-color);
-            color: var(--white);
+        .team-photo {
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            margin: 0 auto 1rem;
             transition: var(--transition);
         }
 
-        .team-social a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
+        .team-member:hover .team-photo {
+            transform: scale(1.1);
+            border-color: var(--red);
         }
 
-        /* Partners Section */
-        #partners {
-            padding: 100px 0;
-            background-color: var(--alt-bg);
+        .team-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 40px;
-            align-items: center;
+        .team-role {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 3rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .stat-value:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--red);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--white);
+        }
+
+        .partner-logo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
         .partner-logo {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100px;
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .partner-logo img {
-            max-height: 60px;
-            filter: grayscale(100%);
-            opacity: 0.7;
+            max-width: 150px;
+            max-height: 80px;
+            filter: grayscale(100%) brightness(1.5);
             transition: var(--transition);
         }
 
         .partner-logo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.1);
         }
 
-        .partner-logo:hover img {
-            filter: grayscale(0%);
-            opacity: 1;
+        .highlight-box {
+            background: linear-gradient(135deg, var(--red), var(--deep-red));
+            border-left: 5px solid var(--gold);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
         }
 
-        /* Results Section */
-        #results {
-            padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        .highlight-box h3 {
             color: var(--white);
         }
 
-        #results .section-title {
-            color: var(--white);
-        }
-
-        #results .section-title:after {
-            background-color: var(--white);
-        }
-
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-
-        .stat-item:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--accent-color);
-        }
-
-        .stat-title {
-            font-size: 1rem;
-            font-weight: 500;
-        }
-
-        .testimonials-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonial {
-            text-align: center;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-text {
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-        }
-
-        /* Contact Section */
-        #contact {
-            padding: 100px 0;
-            background-color: var(--light-bg);
-        }
-
-        .contact-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 50px;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-form {
-            flex: 1;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            margin-right: 15px;
-            font-size: 1.2rem;
-        }
-
-        .contact-text h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(58, 117, 99, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--secondary-color);
-            color: var(--white);
-            padding: 50px 0 20px;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            margin-bottom: 20px;
-        }
-
-        .footer-logo img {
-            height: 60px;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .footer-social a {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            border-radius: 50%;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .footer-social a:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-
-        .footer-title {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-
-        .footer-links {
+        .project-list {
             list-style: none;
+            margin: 2rem 0;
         }
 
-        .footer-links li {
-            margin-bottom: 10px;
+        .project-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
         }
 
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            transition: var(--transition);
+        .project-item:before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--gold);
+            font-size: 1.5rem;
         }
 
-        .footer-links a:hover {
-            color: var(--white);
-            padding-left: 5px;
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: radial-gradient(circle at center, var(--light-grey) 0%, var(--black) 70%);
+            opacity: 0.5;
+            overflow: hidden;
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .animated-bg:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/api/placeholder/1200/800') center/cover no-repeat;
+            opacity: 0.1;
+            animation: bgPulse 15s infinite alternate;
         }
 
-        .footer-bottom p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin: 0;
+        @keyframes bgPulse {
+            0% {
+                opacity: 0.05;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.15;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 0.05;
+                transform: scale(1);
+            }
         }
 
-        /* Responsive Styles */
         @media (max-width: 992px) {
-            .hero-title {
+            h1 {
                 font-size: 2.5rem;
             }
-
-            .about-container {
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .columns {
                 flex-direction: column;
             }
-
-            .contact-container {
-                flex-direction: column;
+            
+            .slide {
+                padding: 2rem 1rem;
+            }
+            
+            .slide-content {
+                padding: 1.5rem;
+            }
+            
+            .slide-indicators {
+                right: 1rem;
             }
         }
 
         @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-                font-size: 1.5rem;
-                color: var(--primary-color);
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background-color: var(--white);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 30px;
-                transition: var(--transition);
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-menu li {
-                margin: 15px 0;
-            }
-
-            .hero-title {
+            h1 {
                 font-size: 2rem;
             }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                margin-bottom: 40px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 80%;
-                margin-bottom: 10px;
-                text-align: center;
+            
+            h2 {
+                font-size: 1.7rem;
             }
             
-            .stats-container {
-                grid-template-columns: 1fr;
+            .navigation {
+                bottom: 1rem;
+            }
+            
+            .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .slide-indicators {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-inner">
-                <div class="logo">
-                    <img src="/api/placeholder/100/50" alt="COGEX Logo">
-                    <h1>COGEX</h1>
+    <div class="main-container">
+        <!-- Slide 1: Capa -->
+        <div class="slide active" id="slide1">
+            <div class="animated-bg"></div>
+            <div class="slide-content">
+                <div class="logo-container">
+                    <img src="/api/placeholder/250/100" alt="COGEX Logo" class="logo">
                 </div>
-                <nav>
-                    <ul class="nav-menu">
-                        <li><a href="#hero">Início</a></li>
-                        <li><a href="#about">Sobre</a></li>
-                        <li><a href="#structure">Estrutura</a></li>
-                        <li><a href="#projects">Projetos</a></li>
-                        <li><a href="#team">Equipe</a></li>
-                        <li><a href="#partners">Parcerias</a></li>
-                        <li><a href="#results">Resultados</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </nav>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
+                <h1 class="slide-title">CORREGEDORIA GERAL DO FORO EXTRAJUDICIAL</h1>
+                <div style="text-align: center;">
+                    <h3>Des. José Jorge Figueiredo dos Anjos</h3>
+                    <p>Corregedor Geral do Foro Extrajudicial</p>
+                    <p style="color: var(--gold); font-weight: 600; margin-top: 2rem;">GESTÃO 2024-2026</p>
                 </div>
             </div>
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">CORREGEDORIA GERAL DO FORO EXTRAJUDICIAL</h1>
-                <p class="hero-subtitle">Garantindo a qualidade, segurança e agilidade dos serviços extrajudiciais no Maranhão</p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn">Conheça a COGEX</a>
-                    <a href="#projects" class="btn btn-outline">Projetos e Iniciativas</a>
-                </div>
-            </div>
-        </div>
-        <a href="#about" class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </a>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">A COGEX</h2>
-            <div class="about-container">
-                <div class="about-image">
-                    <img src="/api/placeholder/600/400" alt="COGEX - Missão e Valores">
-                </div>
-                <div class="about-content">
-                    <p>A Corregedoria Geral do Foro Extrajudicial desempenha um papel vital na administração dos serviços públicos delegados pelo Poder Judiciário do Estado do Maranhão.</p>
-                    <p>Busca através da atividade orientadora e fiscalizadora, garantir a qualidade, segurança e agilidade da prestação "extrajurisdicional" de forma que a entrega "cogexiana" traduza em eficiência vez que, como órgão, tem como busca a construção de uma sociedade digna em direitos, justa em valores e socialmente menos desigual.</p>
-                    
-                    <div class="about-feature">
-                        <h3>Missão</h3>
-                        <p>Garantir a legalidade e eficiência dos serviços extrajudiciais, promovendo transparência e fortalecendo a cidadania.</p>
-                    </div>
-                    
-                    <div class="about-feature">
-                        <h3>Visão</h3>
-                        <p>Ser referência nacional em excelência de gestão, fiscalização e orientação dos serviços extrajudiciais.</p>
-                    </div>
-                    
-                    <div class="about-feature">
-                        <h3>Valores</h3>
-                        <p>Ética, Transparência, Eficiência, Compromisso Social e Inovação.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Iniciativas e Projetos</h2>
-            
-            <div class="projects-tabs">
-                <button class="tab-button active">Todos</button>
-                <button class="tab-button">Em Andamento</button>
-                <button class="tab-button">Concluídos</button>
-                <button class="tab-button">Futuros</button>
-            </div>
-            
-            <div class="projects-container">
-                <div class="project-card">
-                    <div class="project-card-image">
-                        <img src="/api/placeholder/400/200" alt="Registro Cidadão">
-                        <span class="project-badge">Em Andamento</span>
-                    </div>
-                    <div class="project-card-content">
-                        <h3 class="project-card-title">Registro Cidadão</h3>
-                        <p>Projeto que garante que grupos vulneráveis tenham acesso a certidões essenciais, fundamentais para o exercício da cidadania. Busca combater o sub-registro e levar direitos aos "invisíveis".</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-card-image">
-                        <img src="/api/placeholder/400/200" alt="Código de Normas">
-                        <span class="project-badge">Em Andamento</span>
-                    </div>
-                    <div class="project-card-content">
-                        <h3 class="project-card-title">Novo Código de Normas</h3>
-                        <p>Implementação de um novo Código de Normas Estadual do Foro Extrajudicial, com adequação ao Código Nacional do Foro Extrajudicial (CNJ).</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-card-image">
-                        <img src="/api/placeholder/400/200" alt="Modelo de Inspeções">
-                        <span class="project-badge">Em Andamento</span>
-                    </div>
-                    <div class="project-card-content">
-                        <h3 class="project-card-title">Reformulação de Inspeções</h3>
-                        <p>Reformulação do modelo de Inspeções, com perspectiva de aperfeiçoamento da gestão de serventias extrajudiciais e maior eficiência no processo de fiscalização.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-card-image">
-                        <img src="/api/placeholder/400/200" alt="Casamento Comunitário">
-                        <span class="project-badge">Em Andamento</span>
-                    </div>
-                    <div class="project-card-content">
-                        <h3 class="project-card-title">Casamento Comunitário</h3>
-                        <p>Ampliação do projeto casamento comunitário para regularizar a situação civil de milhares de casais maranhenses, promovendo inclusão social e garantia de direitos.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-card-image">
-                        <img src="/api/placeholder/400/200" alt="Protesto Automatizado">
-                        <span class="project-badge">Futuro</span>
-                    </div>
-                    <div class="project-card-content">
-                        <h3 class="project-card-title">Protesto Automatizado</h3>
-                        <p>Projeto para automatizar o protesto de decisões judiciais via comunicação das varas judiciais com os cartórios de protesto, agilizando processos e reduzindo burocracia.</p>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-card-image">
-                        <img src="/api/placeholder/400/200" alt="Qualificação">
-                        <span class="project-badge">Em Andamento</span>
-                    </div>
-                    <div class="project-card-content">
-                        <h3 class="project-card-title">Qualificação Sistemática</h3>
-                        <p>Estruturação e implantação de qualificação sistemática da equipe interna de servidores, garantindo excelência no atendimento e nas atividades de fiscalização.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team">
-        <div class="container">
-            <h2 class="section-title">Nossa Equipe</h2>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="team-member-image">
-                        <img src="/api/placeholder/400/500" alt="Des. José Jorge Figueiredo dos Anjos">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">Des. José Jorge Figueiredo dos Anjos</h3>
-                        <p class="team-member-role">Corregedor Geral do Foro Extrajudicial</p>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="far fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-member-image">
-                        <img src="/api/placeholder/400/500" alt="Juíza Laysa de Jesus Paz Martins Mendes">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">Juíza Laysa de Jesus Paz Martins Mendes</h3>
-                        <p class="team-member-role">Juíza Auxiliar</p>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="far fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-member-image">
-                        <img src="/api/placeholder/400/500" alt="Juiz André Bogéa Pereira Santos">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">Juiz André Bogéa Pereira Santos</h3>
-                        <p class="team-member-role">Juiz Auxiliar</p>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="far fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-member-image">
-                        <img src="/api/placeholder/400/500" alt="Coordenador Administrativo">
-                    </div>
-                    <div class="team-member-content">
-                        <h3 class="team-member-name">Coordenador Administrativo</h3>
-                        <p class="team-member-role">Coordenadoria Administrativa</p>
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="far fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section id="partners">
-        <div class="container">
-            <h2 class="section-title">Parcerias Interinstitucionais</h2>
-            
-            <p class="text-center" style="margin-bottom: 40px;">A COGEX tem estabelecido parcerias com o Poder Público Estadual e Municipal, bem como, articulado ações com a iniciativa privada visando a realização das políticas judiciárias que dependam dos cartórios para sua concretização.</p>
-            
-            <div class="partners-grid">
-                <div class="partner-logo">
-                    <img src="/api/placeholder/200/100" alt="Defensoria Pública do Estado do Maranhão">
-                </div>
-                
-                <div class="partner-logo">
-                    <img src="/api/placeholder/200/100" alt="ANOREG/MA">
-                </div>
-                
-                <div class="partner-logo">
-                    <img src="/api/placeholder/200/100" alt="Colégio Notarial do Brasil - Maranhão">
-                </div>
-                
-                <div class="partner-logo">
-                    <img src="/api/placeholder/200/100" alt="Perícia Oficial - Maranhão">
-                </div>
-                
-                <div class="partner-logo">
-                    <img src="/api/placeholder/200/100" alt="ARPEN/MA">
-                </div>
-                
-                <div class="partner-logo">
-                    <img src="/api/placeholder/200/100" alt="Tribunal de Justiça do Maranhão">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Results Section -->
-    <section id="results">
-        <div class="container">
-            <h2 class="section-title">Resultados e Impactos Sociais</h2>
-            
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="stat-number">+25.000</div>
-                    <div class="stat-title">Certidões Emitidas</div>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number">98%</div>
-                    <div class="stat-title">Satisfação dos Usuários</div>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number">150</div>
-                    <div class="stat-title">Serventias Fiscalizadas</div>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number">2ª</div>
-                    <div class="stat-title">Maior Fonte de Arrecadação do TJ-MA</div>
-                </div>
-            </div>
-            
-            <div class="testimonials-container">
-                <div class="testimonial">
-                    <p class="testimonial-text">"Os projetos da COGEX resultaram em um aumento significativo no acesso a documentos essenciais que impactam diretamente a vida de milhares de cidadãos maranhenses, especialmente nas comunidades mais vulneráveis."</p>
-                    <p class="testimonial-author">— Representante da Comunidade</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <p>Para mais informações sobre a Corregedoria Geral do Foro Extrajudicial, entre em contato conosco pelos canais abaixo:</p>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Endereço</h3>
-                            <p>Av. dos Tribunais, 123 - Centro, São Luís - MA, 65000-000</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Telefone</h3>
-                            <p>(98) 3000-0000</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>E-mail</h3>
-                            <p>cogex@tjma.jus.br</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Horário de Funcionamento</h3>
-                            <p>Segunda a Sexta: 8h às 18h</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nome Completo" required>
-                        </div>
+        <!-- Slide 2: A COGEX -->
+        <div class="slide" id="slide2">
+            <div class="animated-bg"></div>
+            <div class="slide-content">
+                <h2 class="slide-title">A COGEX</h2>
+                <div class="columns">
+                    <div class="column">
+                        <p>A Corregedoria Geral do Foro Extrajudicial desempenha um papel vital na administração dos serviços públicos delegados pelo Poder Judiciário do Estado do Maranhão.</p>
+                        <p>Busca através da atividade orientadora e fiscalizadora, garantir a qualidade, segurança e agilidade da prestação "extrajurisdicional" de forma que a entrega "cogexiana" traduza em eficiência vez que, como órgão, tem como busca a construção de uma sociedade digna em direitos, justa em valores e socialmente menos desigual.</p>
                         
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="E-mail" required>
+                        <div class="highlight-box">
+                            <h3>Objetivo da Apresentação</h3>
+                            <p>Demonstrar a experiência maranhense com a criação da Corregedoria Geral do Foro Extrajudicial.</p>
                         </div>
-                        
-                        <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Telefone">
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+                            <h3 class="card-title">Missão</h3>
+                            <p>Garantir a legalidade e eficiência dos serviços extrajudiciais, promovendo transparência e fortalecendo a cidadania.</p>
                         </div>
-                        
-                        <div class="form-group">
-                            <select class="form-control" required>
-                                <option value="" selected disabled>Assunto</option>
-                                <option value="informacao">Informações Gerais</option>
-                                <option value="denuncia">Denúncia</option>
-                                <option value="elogio">Elogio</option>
-                                <option value="sugestao">Sugestão</option>
-                                <option value="outros">Outros</option>
-                            </select>
+                        <div class="card" style="margin-top: 2rem;">
+                            <div class="card-icon"><i class="fas fa-eye"></i></div>
+                            <h3 class="card-title">Visão</h3>
+                            <p>Ser referência nacional em excelência de gestão, fiscalização e orientação dos serviços extrajudiciais.</p>
                         </div>
-                        
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Mensagem" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn">Enviar Mensagem</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <img src="/api/placeholder/200/100" alt="COGEX Logo">
-                    </div>
-                    <p>A Corregedoria Geral do Foro Extrajudicial do Maranhão trabalha para garantir a qualidade, segurança e agilidade dos serviços extrajudiciais.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Links Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#hero">Início</a></li>
-                        <li><a href="#about">Sobre a COGEX</a></li>
-                        <li><a href="#structure">Estrutura Organizacional</a></li>
-                        <li><a href="#projects">Projetos e Iniciativas</a></li>
-                        <li><a href="#team">Nossa Equipe</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Serviços</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Certidões</a></li>
-                        <li><a href="#">Registro Civil</a></li>
-                        <li><a href="#">Notas</a></li>
-                        <li><a href="#">Protesto</a></li>
-                        <li><a href="#">Registro de Imóveis</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Informativo</h3>
-                    <p>Receba as novidades e atualizações da COGEX diretamente no seu e-mail.</p>
-                    <form action="#" method="POST" style="margin-top: 15px;">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Seu e-mail" required>
+        <!-- Slide 3: Importância da Corregedoria -->
+        <div class="slide" id="slide3">
+            <div class="animated-bg"></div>
+            <div class="slide-content">
+                <h2 class="slide-title">Importância da Corregedoria</h2>
+                <div class="columns">
+                    <div class="column">
+                        <p>A Corregedoria Geral do Foro Extrajudicial é essencial para garantir a legalidade e eficiência dos serviços, promovendo transparência, fortalecendo a cidadania e garantindo a segurança e confiabilidade nos serviços entregues pelos cartorários maranhenses.</p>
+                        <p>De forma geral é um órgão da administração do Poder Judiciário Maranhense que tem por finalidade planejar, supervisionar, coordenar, orientar, controlar e fiscalizar os serviços delegados.</p>
+                        
+                        <div class="highlight-box">
+                            <h3>Contexto Atual</h3>
+                            <p>A atividade extrajudicial enfrenta desafios significativos. O seu aperfeiçoamento impacta diretamente na vida das pessoas de tal forma que, exige-se além da agilidade peculiar, uma resolutividade extrajudicante, decorrente da segurança e eficiência dos serviços cartorários.</p>
                         </div>
-                        <button type="submit" class="btn" style="width: 100%;">Inscrever-se</button>
-                    </form>
+                    </div>
+                    <div class="column">
+                        <img src="/api/placeholder/500/300" alt="Sede da COGEX" style="width: 100%; border-radius: 8px; border: 3px solid var(--gold);">
+                        
+                        <div style="margin-top: 2rem;">
+                            <img src="/api/placeholder/500/300" alt="Equipe em Reunião" style="width: 100%; border-radius: 8px; border: 3px solid var(--gold);">
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 COGEX - Corregedoria Geral do Foro Extrajudicial. Todos os direitos reservados.</p>
             </div>
         </div>
-    </footer>
 
-    <!-- JavaScript -->
-    <script>
-        // Mobile Menu Toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const navMenu = document.querySelector('.nav-menu');
-            
-            hamburger.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-            });
-            
-            // Close menu when clicking on a nav link
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navMenu.classList.remove('active');
-                });
-            });
-            
-            // Projects Tabs
-            const tabButtons = document.querySelectorAll('.tab-button');
-            
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove active class from all buttons
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    button.classList.add('active');
-                    
-                    // Here you would normally filter projects
-                    // This is a simplified version without actual filtering
-                    const filter = button.textContent.trim();
-                    console.log(`Filtering by: ${filter}`);
-                    
-                    // Actual filtering would happen here in a real implementation
-                });
-            });
-            
-            // Sticky Header
-            window.addEventListener('scroll', function() {
-                const header = document.querySelector('header');
+        <!-- Slide 4: Estrutura da COGEX -->
+        <div class="slide" id="slide4">
+            <div class="animated-bg"></div>
+            <div class="slide-content">
+                <h2 class="slide-title">Estrutura da COGEX</h2>
+                <p style="text-align: center;">A Corregedoria Geral do Foro Extrajudicial (COGEX) desempenha um papel essencial na supervisão e melhoria dos serviços extrajudiciais no Maranhão, assegurando a qualidade e a conformidade legal no setor.</p>
                 
-                if (window.scrollY > 50) {
-                    header.style.padding = '5px 0';
-                    header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                } else {
-                    header.style.padding = '';
-                    header.style.backgroundColor = '';
-                }
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 70,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
-</body>
-</html></div>
-    </section>
-
-    <!-- Structure Section -->
-    <section id="structure">
-        <div class="container">
-            <h2 class="section-title">Estrutura Organizacional</h2>
-            <div class="structure-grid">
-                <div class="structure-card">
-                    <div class="structure-card-image">
-                        <img src="/api/placeholder/400/200" alt="Corregedoria">
-                    </div>
-                    <div class="structure-card-content">
-                        <h3 class="structure-card-title">Administração</h3>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-building"></i></div>
+                        <h3 class="card-title">Administração</h3>
                         <p>A Coordenadoria Administrativa auxilia na gestão interna, garantindo o funcionamento eficiente de todos os departamentos da COGEX.</p>
                     </div>
-                </div>
-                
-                <div class="structure-card">
-                    <div class="structure-card-image">
-                        <img src="/api/placeholder/400/200" alt="Fiscalização">
-                    </div>
-                    <div class="structure-card-content">
-                        <h3 class="structure-card-title">Fiscalização</h3>
+                    
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-search"></i></div>
+                        <h3 class="card-title">Fiscalização</h3>
                         <p>A Coordenadoria de Inspeções garante a fiscalização e observância das normas nas serventias extrajudiciais, promovendo a eficiência dos serviços.</p>
                     </div>
-                </div>
-                
-                <div class="structure-card">
-                    <div class="structure-card-image">
-                        <img src="/api/placeholder/400/200" alt="Reclamações">
-                    </div>
-                    <div class="structure-card-content">
-                        <h3 class="structure-card-title">Reclamações</h3>
+                    
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-comments"></i></div>
+                        <h3 class="card-title">Reclamações</h3>
                         <p>A Coordenação de Reclamações tem incumbência de gestão do trâmite processual no sistema PJECOR, garantindo resposta eficiente às demandas dos cidadãos.</p>
                     </div>
-                </div>
-                
-                <div class="structure-card">
-                    <div class="structure-card-image">
-                        <img src="/api/placeholder/400/200" alt="Contas">
-                    </div>
-                    <div class="structure-card-content">
-                        <h3 class="structure-card-title">Análise de Contas</h3>
+                    
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3 class="card-title">Análise de Contas</h3>
                         <p>A Coordenação de Análise de Contas é responsável pela fiscalização contábil das prestações de contas e certificação da regularização fiscal dos delegatários.</p>
                     </div>
-                </div>
-                
-                <div class="structure-card">
-                    <div class="structure-card-image">
-                        <img src="/api/placeholder/400/200" alt="Serventias">
-                    </div>
-                    <div class="structure-card-content">
-                        <h3 class="structure-card-title">Serventias</h3>
+                    
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-landmark"></i></div>
+                        <h3 class="card-title">Serventias</h3>
                         <p>A Coordenação das Serventias Extrajudiciais tem a incumbência de interlocução com os delegatários na função orientadora, corretiva e fiscalizadora.</p>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Slide 5: Equipe -->
+        <div class="slide" id="slide5">
+            <div class="animated-bg"></div>
+            <div class="slide-content">
+                <h2 class="slide-title">Corregedor-Geral e Sua Equipe</h2>
+                <p style="text-align: center;">O Corregedor-Geral do Foro Extrajudicial é Desembargador José Jorge Figueiredo dos Anjos, que lidera uma equipe comprometida com a excelência na fiscalização e orientação dos serviços extrajudiciais.</p>
+                
+                <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300" alt="Des. José Jorge Figueiredo dos Anjos" class="team-photo">
+                        <h3 class="team-name">Des. José Jorge Figueiredo dos Anjos</h3>
+                        <p class="team-role">Corregedor Geral do Foro Extrajudicial</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300" alt="Juíza Laysa de Jesus Paz Martins Mendes" class="team-photo">
+                        <h3 class="team-name">Juíza Laysa de Jesus Paz Martins Mendes</h3>
+                        <p class="team-role">Juíza Auxiliar</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="/api/placeholder/300/300" alt="Juiz André Bogéa Pereira Santos" class="team-photo">
+                        <h3 class="team-name">Juiz André Bogéa Pereira Santos</h3>
+                        <p class="team-role">Juiz Auxiliar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Projetos -->
+        <div class="slide" id="slide6">
+            <div class="animated-bg"></div>
+            <div class="slide-content">
+                <h2 class="slide-title">Iniciativas e Projetos</h2>
+                <p style="text-align: center;">A Corregedoria Geral do Foro Extrajudicial tem promovido uma série de iniciativas inovadoras e projetos colaborativos, visando aprimorar a eficiência e a eficácia dos serviços prestados à sociedade.</p>
+                
+                <div class="columns">
+                    <div class="column">
+                        <div class="highlight-box">
+                            <h3>Projetos em Andamento</h3>
+                            <p>A COGEX, comprometida com a inclusão social, está na vanguarda de iniciativas transformadoras, como o "Registro Cidadão" e outros projetos estratégicos.</p>
+                        </div>
+                        
+                        <ul class="project-list">
+                            <li class="project-item">Registro Cidadão - combate ao sub-registro e acesso a certidões essenciais</li>
+                            <li class="project-item">Novo Código de Normas Estadual do Foro Extrajudicial</li>
+                            <li class="project-item">Reformulação do modelo de Inspeções</li>
+                            <li class="project-item">Qualificação sistemática da equipe</li>
+                            <li class="project-item">Fluxos de trabalho para eficiência administrativa</li>
+                            <li class="project-item">Ampliação do casamento comunitário</li>
+                            <li class="project-item">Combate ao uso de serventias como balcão de negócio</li>
+                            <li class="project-item">Equipe própria de apuração disciplinar</li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <img src="/api/placeholder/500/300" alt="Projetos em andamento" style="width: 100%; border-radius: 8px; border: 3px solid var(--gold); margin-bottom: 2rem;">
+                        
+                        <div class="card">
+                            <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                            <h3 class="card-title">Projetos Futuros</h3>
+                            <p>Automação de protesto de decisões judiciais via comunicação das varas judiciais com os cartórios de protesto, agilizando processos e reduzindo burocracia.</p>
+                            <p>Implementação de plataforma digital unificada para acesso a serviços extrajudiciais pelo cidadão maranhense.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Parcerias -->
+        <div class="slide" id="slide7">
+            <div class="animated-bg"></div>
+            <div class="slide-content">
+                <h2 class="slide-title">Parcerias Interinstitucionais</h2>
+                <p style="text-align: center;">A COGEX tem estabelecido parcerias com o Poder Público Estadual e Municipal, bem como, articulado ações com a iniciativa privada visando a realização das políticas judiciárias que dependam dos cartórios para sua concretização.</p>
+                
+                <div class="partner-logo-container">
+                    <img src="/api/placeholder/150/80" alt="Defensoria Pública do Maranhão" class="partner-logo">
+                    <img src="/api/placeholder/150/80" alt="ANOREG/MA" class="partner-logo">
+                    <img src="/api/placeholder/150/80" alt="Colégio Notarial do Brasil - MA" class="partner-logo">
+                    <img src="/api/placeholder/150/80" alt="Perícia Oficial - MA" class="partner-logo">
+                    <img src="/api/placeholder/150/80" alt="ARPEN/MA" class="partner-logo">
+                    <img src="/api/placeholder/150/80" alt="Tribunal de Justiça do Maranhão" class="partner-logo">
+                </div>
+                
+                <div class="highlight-box" style="margin-top: 3rem;">
+                    <h3>Benefícios das Parcerias</h3>
+                    <p>As parcerias institucionais fortalecem a atuação da COGEX e ampliam o alcance de suas iniciativas, gerando benefícios diretos para a população maranhense e para o sistema de justiça como um todo.</p>
+                </div>
+                
+                <div class="grid" style="margin-top: 2rem;">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                        <h3 class="card-title">Colaboração</h3>
+                        <p>Trabalho conjunto entre instituições para soluções integradas</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-users"></i></div>
+                        <h3 class="card-title">Inclusão</h3>
+                        <p>Alcance de populações vulneráveis e garantia de direitos</p>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
+                        <h3 class="card-title">Justiça</h3>
+                        <p>Promoção de equidade e acesso aos serviços extrajudiciais</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Resultados -->
+        <div class="slide" id="slide8">
+            <div class="animated-bg"></div>
+            <div class="slide-content">
+                <h2 class="slide-title">Resultados e Impactos Sociais</h2>
+                <p style="text-align: center;">Os projetos da COGEX resultaram em um aumento significativo no acesso a documentos essenciais que impactam diretamente a vida de milhares de cidadãos.</p>
+                
+                <div class="stat-container">
+                    <div class="stat">
+                        <div class="stat-value">+25.000</div>
+                        <div class="stat-label">Certidões Emitidas</div>
+                    </div>
+                    
+                    <div class="stat">
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">Satisfação dos Usuários</div>
+                    </div>
+                    
+                    <div class="stat">
+                        <div class="stat-value">150</div>
+                        <div class="stat-label">Serventias Fiscalizadas</div>
+                    </div>
+                    
+                    <div class="stat">
+                        <div class="stat-value">2ª</div>
+                        <div class="stat-label">Maior Fonte de Arrecadação</div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-top: 2rem;">Do ponto de vista contábil-financeiro a atividade cartorária representa, a segunda maior fonte de arrecadação do Poder Judiciário Estadual, de forma que os emolumentos recolhidos impactam na execução das políticas judiciárias.</p>
+                
+                <div class="columns" style="margin-top: 3rem;">
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+                            <h3 class="card-title">Documentos Essenciais</h3>
+                            <p>Garantia de acesso a certidões e documentos fundamentais para o exercício da cidadania, especialmente para grupos vulneráveis.</p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h3 class="card-title">Segurança Jurídica</h3>
+                            <p>Promoção da confiabilidade e segurança dos atos extrajudiciais, garantindo validade e eficácia jurídica.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Encerramento -->
+        <div class="slide" id="slide9">
+            <div class="animated-bg"></div>
+            <div class="slide-content">
+                <div class="logo-container">
+                    <img src="/api/placeholder/250/100" alt="COGEX Logo" class="logo">
+                </div>
+                <h2 class="slide-title">FIM</h2>
+                <div style="text-align: center;">
+                    <h3>OBRIGADO</h3>
+                    <p style="margin-top: 2rem;">Des. José Jorge Figueiredo dos Anjos</p>
+                    <p>Corregedor Geral do Foro Extrajudicial</p>
+                    <p style="color: var(--gold); font-weight: 600; margin-top: 2rem;">GESTÃO 2024-2026</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="navigation">
+            <div class="nav-btn" id="prev-btn"><i class="fas fa-chevron-left"></i></div>
+            <div class="nav-btn" id="next-btn"><i class="fas fa-chevron-right"></i></div>
+        </div>
+        
+        <!-- Slide Indicators -->
+        <div class="slide-indicators">
+            <div class="slide-indicator active" data-slide="1"></div>
+            <div class="slide-indicator" data-slide="2"></div>
+            <div class="slide-indicator" data-slide="3"></div>
+            <div class="slide-indicator" data-slide="4"></div>
+            <div class="slide-indicator" data-slide="5"></div>
+            <div class="slide-indicator" data-slide="6"></div>
+            <div class="slide-indicator" data-slide="7"></div>
+            <div class="slide-indicator" data-slide="8"></div>
+            <div class="slide-indicator" data-slide="9"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const indicators = document.querySelectorAll('.slide-indicator');
+            let currentSlide = 0;
+            
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Update indicators
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                });
+                
+                // Show the current slide
+                slides[index].classList.add('active');
+                indicators[index].classList.add('active');
+                
+                // Update current slide index
+                currentSlide = index;
+            }
+            
+            // Previous button click
+            prevBtn.addEventListener('click', function() {
+                let newIndex = currentSlide - 1;
+                if (newIndex < 0) {
+                    newIndex = slides.length - 1;
+                }
+                showSlide(newIndex);
+            });
+            
+            // Next button click
+            nextBtn.addEventListener('click', function() {
+                let newIndex = currentSlide + 1;
+                if (newIndex >= slides.length) {
+                    newIndex = 0;
+                }
+                showSlide(newIndex);
+            });
+            
+            // Indicator clicks
+            indicators.forEach(indicator => {
+                indicator.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-slide')) - 1;
+                    showSlide(slideIndex);
+                });
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'ArrowLeft') {
+                    prevBtn.click();
+                } else if (event.key === 'ArrowRight') {
+                    nextBtn.click();
+                } else if (event.key >= '1' && event.key <= '9') {
+                    const slideIndex = parseInt(event.key) - 1;
+                    if (slideIndex < slides.length) {
+                        showSlide(slideIndex);
+                    }
+                }
+            });
+            
+            // Touch navigation
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            document.addEventListener('touchstart', function(event) {
+                touchStartX = event.changedTouches[0].screenX;
+            });
+            
+            document.addEventListener('touchend', function(event) {
+                touchEndX = event.changedTouches[0].screenX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe left, go to next slide
+                    nextBtn.click();
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe right, go to previous slide
+                    prevBtn.click();
+                }
+            }
+            
+            // Initialize with first slide
+            showSlide(0);
+            
+            // Add floating particles effect for luxury
+            const animatedBg = document.querySelectorAll('.animated-bg');
+            
+            animatedBg.forEach(bg => {
+                for (let i = 0; i < 20; i++) {
+                    const particle = document.createElement('div');
+                    particle.style.position = 'absolute';
+                    particle.style.width = `${Math.random() * 10 + 5}px`;
+                    particle.style.height = particle.style.width;
+                    particle.style.background = i % 3 === 0 ? '#D4AF37' : (i % 3 === 1 ? '#990000' : '#FFFFFF');
+                    particle.style.opacity = Math.random() * 0.2 + 0.1;
+                    particle.style.borderRadius = '50%';
+                    particle.style.top = `${Math.random() * 100}%`;
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.animation = `floatParticle ${Math.random() * 20 + 10}s infinite linear`;
+                    
+                    // Add unique keyframes for each particle
+                    const keyframes = `
+                        @keyframes floatParticle {
+                            0% {
+                                transform: translate(0, 0) rotate(0deg);
+                                opacity: ${Math.random() * 0.2 + 0.1};
+                            }
+                            25% {
+                                transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(${Math.random() * 360}deg);
+                                opacity: ${Math.random() * 0.3 + 0.2};
+                            }
+                            50% {
+                                transform: translate(${Math.random() * 200 - 100}px, ${Math.random() * 200 - 100}px) rotate(${Math.random() * 720}deg);
+                                opacity: ${Math.random() * 0.2 + 0.1};
+                            }
+                            75% {
+                                transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(${Math.random() * 360}deg);
+                                opacity: ${Math.random() * 0.3 + 0.2};
+                            }
+                            100% {
+                                transform: translate(0, 0) rotate(0deg);
+                                opacity: ${Math.random() * 0.2 + 0.1};
+                            }
+                        }
+                    `;
+                    
+                    const style = document.createElement('style');
+                    style.textContent = keyframes;
+                    document.head.appendChild(style);
+                    
+                    bg.appendChild(particle);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
